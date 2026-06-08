@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Department Education Culture Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fffe;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #07192f 0%, #0a2240 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(7, 25, 47, 0.15);
+        }
+
+        .igm-status {
+            background: rgba(51, 224, 196, 0.1);
+            border: 1px solid #33e0c4;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #33e0c4;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #33e0c4;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #33e0c4;
+        }
+
+        .dashboard-card h3 {
+            color: #07192f;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .metric {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffca58;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: #07192f;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #33e0c4;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #07192f;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #33e0c4;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            background: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #07192f;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0a2240;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #33e0c4;
+            color: #07192f;
+        }
+
+        .btn-secondary:hover {
+            background: #2bc9ad;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #33e0c4;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-log {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .contact-entry {
+            padding: 1rem;
+            border-left: 3px solid #ffca58;
+            background: #f9f9f9;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .contact-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            color: #07192f;
+            margin-bottom: 0.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e1e5e9;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #07192f;
+            border-bottom: 3px solid #33e0c4;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .footer {
+            background: #07192f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-container {
+                padding: 1rem;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="igm-status">
+            IGM Status: Active | System Operational
+        </div>
+        <div class="header-content">
+            <div class="logo">History Department Education Culture Hub</div>
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item">Dashboard</a>
+                <a href="#intake" class="nav-item">Intake Form</a>
+                <a href="#contact-log" class="nav-item">Contact Log</a>
+                <a href="#search" class="nav-item">Search</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section">
+            <h2 class="section-title">Dashboard Overview</h2>
+            <div class="dashboard">
+                <div class="dashboard-card">
+                    <h3>Student Engagement</h3>
+                    <div class="metric">847</div>
+                    <div class="metric-label">Active Students</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Faculty Research</h3>
+                    <div class="metric">23</div>
+                    <div class="metric-label">Ongoing Projects</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Curriculum Items</h3>
+                    <div class="metric">156</div>
+                    <div class="metric-label">Documented Courses</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Outcome Reports</h3>
+                    <div class="metric">89%</div>
+                    <div class="metric-label">Success Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intake Form Section -->
+        <section id="intake" class="content-section">
+            <h2 class="section-title">Data Intake Form</h2>
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('student-engagement')">Student Engagement</button>
+                <button class="tab" onclick="showTab('faculty-research')">Faculty Research</button>
+                <button class="tab" onclick="showTab('curriculum')">Curriculum</button>
+                <button class="tab" onclick="showTab('outcomes')">Outcomes</button>
+            </div>
+
+            <!-- Student Engagement Tab -->
+            <div id="student-engagement" class="tab-content active">
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Student ID</label>
+                        <input type="text" class="form-input" placeholder="Enter student ID">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Student Name</label>
+                        <input type="text" class="form-input" placeholder="Enter student name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Course Code</label>
+                        <input type="text" class="form-input" placeholder="e.g., HIST 101">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Engagement Level</label>
+                        <select class="form-select">
+                            <option>High</option>
+                            <option>Medium</option>
+                            <option>Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Participation Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Activity Type</label>
+                        <select class="form-select">
+                            <option>Class Discussion</option>
+                            <option>Research Project</option>
+                            <option>Presentation</option>
+                            <option>Field Work</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-input form-textarea" placeholder="Additional notes about student engagement"></textarea>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <button type="submit" class="btn btn-primary">Submit Engagement Record</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Faculty Research Tab -->
+            <div id="faculty-research" class="tab-content">
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Faculty Member</label>
+                        <input type="text" class="form-input" placeholder="Enter faculty name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Research Project Title</label>
+                        <input type="text" class="form-input" placeholder="Enter project title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Research Area</label>
+                        <select class="form-select">
+                            <option>Ancient History</option>
+                            <option>Medieval History</option>
+                            <option>Modern History</option>
+                            <option>Cultural History</option>
+                            <option>Social History</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Project Status</label>
+                        <select class="form-select">
+                            <option>Planning</option>
+                            <option>In Progress</option>
+                            <option>Data Collection</option>
+                            <option>Analysis</option>
+                            <option>Writing</option>
+                            <option>Completed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Start Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Expected Completion</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label">Research Description</label>
+                        <textarea class="form-input form-textarea" placeholder="Detailed description of the research project"></textarea>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <button type="submit" class="btn btn-primary">Submit Research Record</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Curriculum Tab -->
+            <div id="curriculum" class="tab-content">
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Course Code</label>
+                        <input type="text" class="form-input" placeholder="e.g., HIST 201">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Course Title</label>
+                        <input type="text" class="form-input" placeholder="Enter course title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Instructor</label>
+                        <input type="text" class="form-input" placeholder="Enter instructor name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Credit Hours</label>
+                        <input type="number" class="form-input" placeholder="3">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Course Level</label>
+                        <select class="form-select">
+                            <option>Undergraduate</option>
+                            <option>Graduate</option>
+                            <option>Doctoral</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Semester Offered</label>
+                        <select class="form-select">
+                            <option>Fall</option>
+                            <option>Spring</option>
+                            <option>Summer</option>
+                            <option>All Semesters</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label">Course Description</label>
+                        <textarea class="form-input form-textarea" placeholder="Detailed course description and learning objectives"></textarea>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <button type="submit" class="btn btn-primary">Submit Curriculum Record</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Outcomes Tab -->
+            <div id="outcomes" class="tab-content">
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Assessment Type</label>
+                        <select class="form-select">
+                            <option>Course Completion</option>
+                            <option>Student Satisfaction</option>
+                            <option>Learning Outcomes</option>
+                            <option>Graduate Success</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Assessment Period</label>
+                        <input type="text" class="form-input" placeholder="e.g., Fall 2024">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Success Rate (%)</label>
+                        <input type="number" class="form-input" placeholder="85" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Sample Size</label>
+                        <input type="number" class="form-input" placeholder="120">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Data Collection Method</label>
+                        <select class="form-select">
+                            <option>Survey</option>
+                            <option>Assessment Scores</option>
+                            <option>Graduate Tracking</option>
+                            <option>Employer Feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Report Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label">Detailed Findings</label>
+                        <textarea class="form-input form-textarea" placeholder="Detailed analysis and findings from the outcome assessment"></textarea>
+                    </div>
+                    <div class="form-group" style="grid-column
